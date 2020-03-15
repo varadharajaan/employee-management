@@ -45,8 +45,8 @@ public class DataInitializerImpl {
         user1.setPassword(passwordEncoder.encode("password"));
 
         //roleRepository.save(role);
-        userRepository.save(user);
-        userRepository.save(user1);
+       // userRepository.save(user);
+        //userRepository.save(user1);
 
         List<User> users = userRepository.findAll();
         users.forEach(User::getId);
