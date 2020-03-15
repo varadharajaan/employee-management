@@ -1,0 +1,85 @@
+admin:
+  password: '{bcrypt}$2y$12$uBSkmrRWGut0e3Edb0werud6iMjWyscjQjb.rd/mFi4t09NkJDw.2'
+  username: sa
+info:
+  app:
+    description: '@project.description@'
+    encoding: '@project.build.sourceEncoding@'
+    java:
+      version: '@java.version@'
+    name: Employee Management
+    version: '@project.version@'
+jwt:
+  secret: invia
+logging:
+  file:
+    name: logFile.log
+  level:
+    com:
+      employee: TRACE
+    org:
+      springframework: ERROR
+      springframework.boot.test.context.SpringBootTestContextBootstrapper: WARN
+      springframework.test.context.support.AbstractContextLoader: WARN
+    root: INFO
+  pattern:
+    console: '%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n'
+    file: '%d %p %c{1.} [%t] %m%n'
+management:
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+server:
+  port: 8080
+spring:
+  application:
+    name: employee
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+  datasource:
+    url: jdbc:mysql://SG-pte-31981.servers.mongodirector.com:3306/pte
+    username: sgroot
+    password: RZ4lh2VZ.f77uJQv
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+    main:
+      allow-bean-definition-overriding: true
+    servlet:
+      multipart:
+        enabled: true
+        file-size-threshold: 2KB
+        max-file-size: 100MB
+        max-request-size: 215MB
+  jpa:
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+        use_sql_comments: true
+  resources:
+    add-mappings: true
+  security:
+    user:
+      name: actuator
+      password: actuator
+      roles: ACTUATOR_ADMIN

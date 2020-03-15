@@ -1,0 +1,102 @@
+image: docker:latest
+
+# When using dind, it's wise to use the overlayfs driver for
+# improved performance.
+before_script:
+  - rm -rf ./terraform/.terraform
+  - mkdir -p ./terraform/credentials
+  - echo $GCLOUD_SERVICE > ./terraform/credentials/account.json
+
+variables:
+  DOCKER_DRIVER: overlay
+  SPRING_PROFILES_ACTIVE: gitlab-ci
+  USER_GITLAB: varadharajaan
+  APP_NAME: employee-payroll
+  REPO: netent-employee-payroll
+  GCP_PROJECT_ID: employee
+  IMAGE_NAME: netent
+  DOCKER_IMAGE_TAG: 'gcr.io/netent-employee/netent:v1'
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - docker-publish
+  - validate
+  - plan
+  - apply
+  - deploy
+
+build:
+  image: maven:3-jdk-8
+  stage: build
+  script: "mvn package -B"
+  artifacts:
+   paths:
+   - target/*.jar
+
+docker-publish:
+  stage: docker-publish
+  script:
+    - docker login -u _json_key -p "$GCLOUD_SERVICE_KEY" https://gcr.io
+    - docker build -t $IMAGE_NAME .
+    - docker tag $IMAGE_NAME:latest "gcr.io/$GCP_PROJECT_ID/$IMAGE_NAME:v1"
+    - docker push gcr.io/$GCP_PROJECT_ID/$IMAGE_NAME:v1
+
+validate:
+  image:
+    name: hashicorp/terraform:light
+    entrypoint:
+      - '/usr/bin/env'
+      - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+  stage: validate
+  script:
+    - terraform init
+    - terraform validate
+
+plan:
+  image:
+    name: hashicorp/terraform:light
+    entrypoint:
+    - '/usr/bin/env'
+    - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+  stage: plan
+  script:
+    - terraform plan -destroy -out "planfile"
+  dependencies:
+    - validate
+  artifacts:
+    paths:
+      - planfile
+
+apply:
+  image:
+    name: hashicorp/terraform:light
+    entrypoint:
+      - '/usr/bin/env'
+      - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+  stage: apply
+  script:
+    - terraform apply -input=false "planfile"
+  dependencies:
+    - plan
+  when: manual
+
+deploy:
+  image: 'google/cloud-sdk:latest'
+
+  stage: deploy
+  script: 
+    - echo "$GCLOUD_SERVICE_KEY" > key.json
+    - gcloud auth activate-service-account --key-file=key.json
+    - gcloud config set project employee
+    - gcloud config set container/cluster netent
+    - gcloud config set compute/zone us-central1-a
+    - gcloud container clusters get-credentials employee --zone us-central1-a
+    - cat deployment.yaml | kubectl apply -f -
+
+
+  # Only run builds for these refs
+  only:
+    - master
