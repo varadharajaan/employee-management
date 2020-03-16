@@ -1,10 +1,15 @@
-package com.employee.payroll;
+package com.employee.services;
 
 
-import com.employee.employees.Salary;
+import com.employee.model.Salary;
+import com.employee.services.PayrollEmployee;
 
+/**
+ * @Author Varadharajan
+ * @Projectname employee-management
+ */
 
-public class HourlyEmployee implements PayrollEmployee {
+public class HourlyPayrollEmployee implements PayrollEmployee {
 
   private int id;
   private String name;
@@ -19,8 +24,8 @@ public class HourlyEmployee implements PayrollEmployee {
   /**
    * DTO Concrete Implementation of {@link PayrollEmployee}.
    */
-  HourlyEmployee(int id, String name, String contractTypeName, int roleId, String roleName,
-      String roleDescription, double hourlySalary) {
+  HourlyPayrollEmployee(int id, String name, String contractTypeName, int roleId, String roleName,
+                        String roleDescription, double hourlySalary) {
     this.id = id;
     this.name = name;
     this.contractTypeName = contractTypeName;

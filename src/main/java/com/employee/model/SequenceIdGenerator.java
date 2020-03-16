@@ -5,6 +5,11 @@ import org.hibernate.id.IdentifierGenerator;
 
 import java.io.Serializable;
 
+/**
+ * @Author Varadharajan
+ * @Projectname employee-management
+ */
+
 public class SequenceIdGenerator implements IdentifierGenerator {
 
 

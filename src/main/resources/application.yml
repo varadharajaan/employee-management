@@ -10,7 +10,7 @@ info:
     name: Employee Management
     version: '@project.version@'
 jwt:
-  secret: invia
+  secret: employee
 logging:
   file:
     name: logFile.log
@@ -83,3 +83,6 @@ spring:
       name: actuator
       password: actuator
       roles: ACTUATOR_ADMIN
+payroll:
+  datasource:
+    api-uri: https://dummy.payroll.restapi.com

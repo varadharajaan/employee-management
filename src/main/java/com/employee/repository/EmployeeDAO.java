@@ -7,17 +7,19 @@ import java.util.stream.Stream;
 import com.employee.model.Employee;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * Employee's Data Access Layer Repo.
  */
-@Repository
+@Component
 public class EmployeeDAO {
 
-  private final static String EMPLOYEES = "/employees";
+  private final static String EMPLOYEES = "/salaries";
   private final RestTemplate rest;
+
 
   EmployeeDAO(RestTemplateBuilder builder,
       @Value("${masglobal.datasource.api-uri}") String apiUri) {

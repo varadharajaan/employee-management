@@ -1,4 +1,4 @@
-package com.employee.employees;
+package com.employee.model;
 
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.IDENTITY;
@@ -10,6 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
+
+/**
+ * @Author Varadharajan
+ * @Projectname employee-management
+ */
 
 @Entity(name = "salary")
 public class Salary {

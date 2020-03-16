@@ -1,9 +1,15 @@
-package com.employee.payroll;
+package com.employee.services;
 
 
-import com.employee.employees.Salary;
+import com.employee.model.Salary;
+import com.employee.services.PayrollEmployee;
 
-public class MonthlyEmployee implements PayrollEmployee {
+/**
+ * @Author Varadharajan
+ * @Projectname employee-management
+ */
+
+public class MonthlyPayrollEmployee implements PayrollEmployee {
 
   private int id;
   private String name;
@@ -18,8 +24,8 @@ public class MonthlyEmployee implements PayrollEmployee {
   /**
    * DTO Concrete Implementation of {@link PayrollEmployee}.
    */
-  MonthlyEmployee(int id, String name, String contractTypeName, int roleId, String roleName,
-      String roleDescription, double monthlySalary) {
+  MonthlyPayrollEmployee(int id, String name, String contractTypeName, int roleId, String roleName,
+                         String roleDescription, double monthlySalary) {
     this.id = id;
     this.name = name;
     this.contractTypeName = contractTypeName;

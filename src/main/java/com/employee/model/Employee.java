@@ -1,7 +1,7 @@
 package com.employee.model;
 
 
-import com.employee.model.AuditEntity;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -10,6 +10,11 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+/**
+ * @Author Varadharajan
+ * @Projectname employee-management
+ */
 
 @Entity
 @Table(name = "employee")
@@ -38,17 +43,17 @@ public class Employee  extends AuditEntity {
     @Min(0) @Max(1)
     private Integer enabled = 0;
 
-    String contractTypeName;
+    private String contractTypeName;
 
-    int roleId;
+    private int roleId;
 
-    String roleName;
+   private  String roleName;
 
-    String roleDescription;
+   private String roleDescription;
 
-    float hourlySalary;
+   private  float hourlySalary;
 
-    float monthlySalary;
+    private float monthlySalary;
 
     @Override
     public String toString() {

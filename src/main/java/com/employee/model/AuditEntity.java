@@ -2,6 +2,12 @@ package com.employee.model;
 
 import java.time.Instant;
 
+
+/**
+ * @Author Varadharajan
+ * @Projectname employee-management
+ */
+
 public class AuditEntity {
 
     public Instant createdDate;

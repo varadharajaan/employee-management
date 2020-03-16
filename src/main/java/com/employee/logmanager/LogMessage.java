@@ -3,9 +3,10 @@ package com.employee.logmanager;
 import java.util.Objects;
 
 /**
- * @Author Varadharajan on 20/11/19 23:06
- * @Projectname logging-demo
+ * @Author Varadharajan
+ * @Projectname employee-management
  */
+
 public class LogMessage {
 
     private int httpStatus;

@@ -1,6 +1,11 @@
 package com.employee.constants;
 
 
+/**
+ * @Author Varadharajan
+ * @Projectname employee-management
+ */
+
 public class AppConstants {
 
     private AppConstants() {

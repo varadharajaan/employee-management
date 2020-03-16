@@ -4,6 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
+/**
+ * @Author Varadharajan
+ * @Projectname employee-management
+ */
+
 @Entity
 @Table(name="roles")
 public class Role extends AuditEntity{

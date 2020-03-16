@@ -5,6 +5,12 @@ import org.springframework.boot.actuate.health.AbstractHealthIndicator;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.stereotype.Component;
 
+
+/**
+ * @Author Varadharajan
+ * @Projectname employee-management
+ */
+
 @Component
 public class CustomHealthIndicator extends AbstractHealthIndicator {
 

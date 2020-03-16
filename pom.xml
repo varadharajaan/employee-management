@@ -20,6 +20,7 @@
         <docker.image.prefix>salary</docker.image.prefix>
         <docker.maven.plugin.version>0.4.11</docker.maven.plugin.version>
         <dockerfile-maven-version>1.4.3</dockerfile-maven-version>
+        <maven.test.skip>true</maven.test.skip>
     </properties>
 
 

@@ -1,7 +1,6 @@
-package com.employee.payroll;
+package com.employee.services;
 
-import com.employee.model.Employee;
-import com.employee.employees.Salary;
+import com.employee.model.Salary;
 
 import static java.text.NumberFormat.getCurrencyInstance;
 
@@ -10,7 +9,7 @@ import static java.text.NumberFormat.getCurrencyInstance;
  * DTO Abstraction.
  */
 @SuppressWarnings("unused")
-interface PayrollEmployee {
+public interface PayrollEmployee {
 
   int getId();
 
@@ -42,11 +41,11 @@ interface PayrollEmployee {
     return getCurrencyInstance().format(getAnnualSalary());
   }
 
-  static PayrollEmployee from(Employee emp) {
+  static PayrollEmployee from(com.employee.model.Employee emp) {
     return emp.getContractTypeName().contains("Hourly") ?
-        new HourlyEmployee(emp.getId(), emp.getName(), emp.getContractTypeName(), emp.getRoleId(),
+        new HourlyPayrollEmployee(emp.getId(), emp.getName(), emp.getContractTypeName(), emp.getRoleId(),
             emp.getRoleName(), emp.getRoleDescription(), emp.getHourlySalary()) :
-        new MonthlyEmployee(emp.getId(), emp.getName(), emp.getContractTypeName(), emp.getRoleId(),
+        new MonthlyPayrollEmployee(emp.getId(), emp.getName(), emp.getContractTypeName(), emp.getRoleId(),
             emp.getRoleName(), emp.getRoleDescription(), emp.getMonthlySalary());
   }
 }
