@@ -82,4 +82,11 @@ public class EmployeeControllerTest {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    public void deleteSalaryAPI() throws Exception
+    {
+        mvc.perform( MockMvcRequestBuilders.delete("/salary/", 1) )
+                .andExpect(status().isAccepted());
+    }
 }
