@@ -109,8 +109,11 @@ public class PayrollServiceTest {
                 ArgumentMatchers.any(), ArgumentMatchers.<Class<Employee>>any()))
                 .thenReturn(myEntity);
         when(employeeRepository.save(any(Employee.class))).thenReturn(employee);
-        Employee em = payrollService.saveEmployee(employee);
+        Employee em = payrollService.updateEmployee(employee);
         assertNotNull(employee);
+        StringBuilder sb = new StringBuilder();
+        sb.insert(0,"hello");
+
 
     }
 
