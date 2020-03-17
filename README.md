@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/varadharajaan/Flight-booking-application.svg?style=svg)](https://circleci.com/gh/varadharajaan/Flight-booking-application)
+[![CircleCI](https://circleci.com/gh/varadharajaan/employee-management.svg?style=svg)](https://circleci.com/gh/varadharajaan/employee-management)
 
 EMPLOYEE-MANAGEMENT
 =========================
