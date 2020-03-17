@@ -39,47 +39,49 @@ Consuming Rest Service
 ---------------------
 To consume SpringBoot app user service:
 
-    $ curl http://localhost:8080/authenticate , This will return JWT token in Response Header.
-    REQUEST : "username" : "john"
-               "password : "password  
+    $ curl http://localhost:8080/authenticate , This will return JWT token in Response Header. <br />
+    REQUEST : "username" : "john" <br />
+               "password : "password   <br />
     
 ------------------------------------------------------------------------------------------------------------------------
 
 Docker push to Docker Hub Container Registry
 ---------------------
 
-$export PROJECT_ID="$(gcloud config get-value project -q)"
+$export PROJECT_ID="$(gcloud config get-value project -q)" <br />
 
-$gcloud auth configure-docker
+$gcloud auth configure-docker <br />
 
-$docker tag employee:latest "gcr.io/employee/employee:v1"
+$docker tag employee:latest "gcr.io/employee/employee:v1" <br />
 
-$docker push gcr.io/employee/employee:v1
+$docker push gcr.io/employee/employee:v1 <br />
 
 ------------------------------------------------------------------------------------------------------------------------
 Gitlab File
 --------------
 
-$Gitlab integration which go mvn install and other stages
+$ Gitlab integration which go mvn install and other stages <br />
 
-$docker build and push to docker hub
+$ docker build and push to docker hub <br />
 
-$ Trigger terraform apply and provision environment and deploy the docker image in Google Kubernetes Cluster
+$ Trigger terraform apply and provision environment and deploy the docker image in Google Kubernetes Cluster <br />
 
-$ Communication mail to all team members
+$ Communication mail to all team members <br />
+
 ------------------------------------------------------------------------------------------------------------------------
 GCP Deployment using Terraform as Infrastructure as a Code
 -------------------------------------
 
-$Step 1: terraform init
-$Step 2: terraform plan
-$Step 3: terraform apply
+$Step 1: terraform init <br />
+$Step 2: terraform plan <br />
+$Step 3: terraform apply <br />
+
 ------------------------------------------------------------------------------------------------------------------------
 User level Authentication   ( JWT) 
 --------------------------
 
- $ Time of User Registration, USERNAME and PASSWORD is stored in database and each time when user tries to book flight he needs to be autheticated.
- $ also implemented Role level authorisation 
+ $ Time of User Registration, USERNAME and PASSWORD is stored in database and each time when user tries to book flight he needs to be autheticated. <br />
+ $ Also implemented Role level authorisation <br />
 
 ------------------------------------------------------------------------------------------------------------------------
     
