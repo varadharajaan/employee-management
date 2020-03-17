@@ -36,22 +36,22 @@ Consuming Rest Service
 ---------------------
 To consume SpringBoot app user service:
 
-    $ curl http://localhost:8080/authenticate , This will return JWT token in Response Header. <br />
-    REQUEST : "username" : "john" <br />
-               "password : "password   <br />
+    $ curl http://localhost:8080/authenticate , This will return JWT token in Response Header. 
+    REQUEST : "username" : "john" 
+               "password : "password  
     
 ------------------------------------------------------------------------------------------------------------------------
 
 Docker push to Docker Hub Container Registry
 ---------------------
 
-    $export PROJECT_ID="$(gcloud config get-value project -q)" <br />
+    $export PROJECT_ID="$(gcloud config get-value project -q)" 
 
-    $gcloud auth configure-docker <br />
+    $gcloud auth configure-docker 
 
-    $docker tag employee:latest "gcr.io/employee/employee:v1" <br />
+    $docker tag employee:latest "gcr.io/employee/employee:v1" 
 
-    $docker push gcr.io/employee/employee:v1 <br />
+    $docker push gcr.io/employee/employee:v1 
 
 ------------------------------------------------------------------------------------------------------------------------
 Gitlab File
