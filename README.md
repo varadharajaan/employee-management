@@ -57,28 +57,28 @@ Docker push to Docker Hub Container Registry
 Gitlab File
 --------------
 
-    $ Gitlab integration which go mvn install and other stages <br />
+    $ Gitlab integration which go mvn install and other stages 
 
-    $ docker build and push to docker hub <br />
+    $ docker build and push to docker hub
 
     $ Trigger terraform apply and provision environment and deploy the docker image in Google Kubernetes Cluster <br />
 
-    $ Communication mail to all team members <br />
+    $ Communication mail to all team members
 
 ------------------------------------------------------------------------------------------------------------------------
 GCP Deployment using Terraform as Infrastructure as a Code
 -------------------------------------
 
-    $ Step 1: terraform init <br />
-    $ Step 2: terraform plan <br />
-    $ Step 3: terraform apply <br />
+    $ Step 1: terraform init 
+    $ Step 2: terraform plan 
+    $ Step 3: terraform apply
 
 ------------------------------------------------------------------------------------------------------------------------
 User level Authentication   ( JWT) 
 --------------------------
 
-    $ Time of User Registration, USERNAME and PASSWORD is stored in database and each time when user tries to book flight he needs to be autheticated. <br />
-    $ Also implemented Role level authorisation <br />
+    $ Time of User Registration, USERNAME and PASSWORD is stored in database and each time when user tries to book flight he needs to be autheticated.
+    $ Also implemented Role level authorisation.
 
 ------------------------------------------------------------------------------------------------------------------------
     
@@ -89,6 +89,7 @@ Elastic Search-LogStash-Kibana
 
 Custom Log Printer
 --------------------------
+
     $ Custom Log Printer which intercepts every request and response in Json Format
 
 ADMIN LOGIN
@@ -98,7 +99,7 @@ ADMIN LOGIN
      username -> john
      password -> password
 
-on giving incorrect password, proper error message is shown
+    on giving incorrect password, proper error message is shown
 
 ------------------------------------------------------------------------------------------------------------------------
 
