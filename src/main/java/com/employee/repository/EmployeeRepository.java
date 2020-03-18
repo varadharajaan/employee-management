@@ -2,7 +2,6 @@ package com.employee.repository;
 
 import com.employee.model.Employee;
 
-import com.employee.model.Salary;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

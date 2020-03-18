@@ -1,7 +1,6 @@
 package com.employee.services;
 
 import com.employee.model.Employee;
-import com.employee.model.Salary;
 
 import static java.text.NumberFormat.getCurrencyInstance;
 
