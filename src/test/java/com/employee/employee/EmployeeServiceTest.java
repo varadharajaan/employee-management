@@ -5,7 +5,6 @@ import com.employee.exception.AppException;
 import com.employee.model.Employee;
 import com.employee.repository.EmployeeDAO;
 import com.employee.repository.EmployeeRepository;
-import com.employee.repository.PayrollRepository;
 import com.employee.services.servicesimpl.EmployeeServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,10 +37,6 @@ public class EmployeeServiceTest {
 
     @Autowired
     EmployeeServiceImpl payrollService;
-
-    @Mock
-    @Autowired
-    PayrollRepository payrollRepository;
 
     @Mock
     @Autowired

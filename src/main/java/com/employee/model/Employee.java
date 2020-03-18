@@ -26,7 +26,7 @@ public class Employee  extends AuditEntity {
      */
     @Id
     @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-    private Integer id;
+    private Integer empId;
     @Size(min = 3)
     @Column(name = "name")
     private String name;

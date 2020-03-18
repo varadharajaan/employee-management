@@ -13,7 +13,7 @@ import java.util.Optional;
  */
 public interface EmployeeRepository extends CrudRepository<Employee, Integer>  {
 
-    Optional<Employee> findFirstByEmpId(int empId);
+    Optional<Employee> findFirstByEmpId(int id);
 
-    int countByEmpId(int empId);
+    int countByEmpId(int id);
 }

@@ -27,7 +27,7 @@ public class EmployeeDAO {
   }
 
   public Optional<Employee> getById(int id) {
-    return getAll().filter(emp -> emp.getId() == id).findAny();
+    return getAll().filter(emp -> emp.getEmpId() == id).findAny();
   }
 
   /**
