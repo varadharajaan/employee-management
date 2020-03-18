@@ -2,8 +2,10 @@ package com.employee.repository;
 
 import com.employee.model.Employee;
 
+import com.employee.model.Salary;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Optional;
 
 
 /**
@@ -11,4 +13,8 @@ import org.springframework.data.repository.CrudRepository;
  * @Projectname employee
  */
 public interface EmployeeRepository extends CrudRepository<Employee, Integer>  {
+
+    Optional<Employee> findFirstByEmpId(int empId);
+
+    int countByEmpId(int empId);
 }

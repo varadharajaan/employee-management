@@ -1,6 +1,7 @@
 package com.employee.services;
 
 
+import com.employee.model.Employee;
 import com.employee.model.Salary;
 import com.employee.services.PayrollEmployee;
 
@@ -51,9 +52,8 @@ public class MonthlyPayrollEmployee implements PayrollEmployee {
   }
 
   @Override
-  public void setPhone(Salary salary) {
-    this.phoneType = salary.getType().name();
-    this.phoneNumber = salary.getRate();
+  public void setPhone(String phone) {
+    this.phoneNumber= phone;
   }
 
   @Override
@@ -89,5 +89,11 @@ public class MonthlyPayrollEmployee implements PayrollEmployee {
   @Override
   public double getAnnualSalary() {
     return monthlySalary * 12;
+  }
+
+  @Override
+  public void setSalary(Employee employee) {
+
+    this.monthlySalary = employee.getMonthlySalary();
   }
 }

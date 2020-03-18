@@ -1,5 +1,6 @@
 package com.employee.services;
 
+import com.employee.model.Employee;
 import com.employee.model.Salary;
 
 import static java.text.NumberFormat.getCurrencyInstance;
@@ -17,7 +18,7 @@ public interface PayrollEmployee {
 
   String getContractTypeName();
 
-  void setPhone(Salary salary);
+  void setPhone(String phone);
 
   String getPhoneType();
 
@@ -48,4 +49,6 @@ public interface PayrollEmployee {
         new MonthlyPayrollEmployee(emp.getId(), emp.getName(), emp.getContractTypeName(), emp.getRoleId(),
             emp.getRoleName(), emp.getRoleDescription(), emp.getMonthlySalary());
   }
+
+  void setSalary(Employee employee);
 }

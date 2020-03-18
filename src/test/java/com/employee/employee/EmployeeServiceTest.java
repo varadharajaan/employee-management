@@ -6,15 +6,12 @@ import com.employee.model.Employee;
 import com.employee.repository.EmployeeDAO;
 import com.employee.repository.EmployeeRepository;
 import com.employee.repository.PayrollRepository;
-import com.employee.services.PayrollService;
-import com.employee.services.servicesimpl.PayrollServiceImpl;
+import com.employee.services.servicesimpl.EmployeeServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -37,10 +34,10 @@ import static org.mockito.MockitoAnnotations.initMocks;
  * @Projectname employee
  */
 @RunWith(MockitoJUnitRunner.class)
-public class PayrollServiceTest {
+public class EmployeeServiceTest {
 
     @Autowired
-    PayrollServiceImpl payrollService;
+    EmployeeServiceImpl payrollService;
 
     @Mock
     @Autowired

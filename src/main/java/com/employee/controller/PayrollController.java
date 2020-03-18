@@ -5,7 +5,7 @@ import static java.util.Collections.singletonMap;
 import java.util.List;
 import java.util.Map;
 import com.employee.model.Employee;
-import com.employee.services.PayrollService;
+import com.employee.services.EmployeeService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class PayrollController {
 
-  private final PayrollService service;
+  private final EmployeeService service;
 
-  PayrollController(PayrollService service) {
+  PayrollController(EmployeeService service) {
     this.service = service;
   }
 
@@ -32,11 +32,6 @@ public class PayrollController {
     return "payroll-employees";
   }
 
-  @PostMapping("/salary")
-  public Map<String, Integer> calculateSalary(@RequestParam int empId, @RequestParam String type,
-                                       @RequestParam String salary) {
-    return singletonMap("salary", service.savaSalary(empId, type, salary));
-  }
 
   @PostMapping("/employee")
   public Employee saveEmployee(@RequestBody Employee employee) {
@@ -57,8 +52,4 @@ public class PayrollController {
     return service.getEmployee(empId);
   }
 
-  @DeleteMapping("/salary")
-  Map<String, Integer> deleteSalary(@RequestParam int empId) {
-    return singletonMap("salary", service.delSalary(empId));
-  }
 }

@@ -10,11 +10,9 @@ import com.employee.model.Employee;
  * @Projectname employee-management
  */
 
-public interface PayrollService {
+public interface EmployeeService {
 
   List<PayrollEmployee> getEmployees(String id);
-
-  int savaSalary(int empId, String type, String rate);
 
   List<Employee> saveEmployees(List<Employee> employees);
 
@@ -24,5 +22,4 @@ public interface PayrollService {
 
   Employee getEmployee(int id);
 
-  int delSalary(int empId);
 }

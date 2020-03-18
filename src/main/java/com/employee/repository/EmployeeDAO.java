@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class EmployeeDAO {
 
-  private final static String EMPLOYEES = "/salaries";
+  private final static String EMPLOYEES = "/employees";
   private final RestTemplate rest;
 
 

@@ -10,12 +10,10 @@ import  com.employee.model.Employee;
 import java.util.*;
 import java.util.stream.Stream;
 
-import com.employee.repository.PayrollRepository;
 import com.employee.repository.EmployeeDAO;
-import com.employee.model.Salary;
 import com.employee.repository.EmployeeRepository;
 import com.employee.services.PayrollEmployee;
-import com.employee.services.PayrollService;
+import com.employee.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -24,7 +22,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
+import sun.java2d.pipe.AlphaPaintPipe;
 
 /**
  * Business Logic Layer Component.
@@ -33,27 +33,26 @@ import org.springframework.web.client.RestTemplate;
  * @Author Varadharajan
  * @Projectname employee-management
  */
-
+@Transactional
 @Service
-public class PayrollServiceImpl implements PayrollService {
+public class EmployeeServiceImpl implements EmployeeService {
 
   private final RestTemplate rest;
 
   @Value("${masglobal.datasource.api-uri}")
   String uri;
 
-  PayrollServiceImpl(RestTemplateBuilder builder,
-              @Value("${masglobal.datasource.api-uri}") String apiUri) {
+  EmployeeServiceImpl(RestTemplateBuilder builder,
+                      @Value("${masglobal.datasource.api-uri}") String apiUri) {
     this.rest = builder.rootUri(apiUri).build();
   }
 
   @Autowired
   private  EmployeeDAO employeeDAO;
-  @Autowired
-  private  PayrollRepository payrollRepository;
 
   @Autowired
   private  EmployeeRepository employeeRepository;
+
 
 
   @Override
@@ -66,15 +65,11 @@ public class PayrollServiceImpl implements PayrollService {
     }
     // Factory method PayrollEmployee::from for concrete instances...
     return employees.map(PayrollEmployee::from).peek(
-            pe -> payrollRepository.findFirstByEmpId(pe.getId()).ifPresent(pe::setPhone)
+            pe -> employeeRepository.findFirstByEmpId(pe.getId()).ifPresent(pe::setSalary)
     ).collect(toList());
   }
 
-  @Override
-  public int savaSalary(int empId, String type, String rate) {
-    return payrollRepository.save(new Salary(empId, rate, Salary.Type.valueOf(type))).getId();
-  }
-
+  @Transactional(rollbackFor = Exception.class)
   @Override
   public List<Employee> saveEmployees(List<Employee> employees) {
 try {
@@ -88,6 +83,7 @@ catch (Exception e) {
 
   }
 
+  @Transactional(rollbackFor = Exception.class)
   @Override
   public Employee saveEmployee(Employee employee) {
 
@@ -109,6 +105,7 @@ catch (Exception e) {
 
   }
 
+  @Transactional(rollbackFor = Exception.class)
   @Override
   public Employee updateEmployee(Employee employee) {
     try {
@@ -130,7 +127,7 @@ catch (Exception e) {
   public Employee getEmployee(int id) {
 
     try {
-     employeeRepository.findById(id);
+     Employee em = employeeRepository.findById(id).get();
 
       HttpHeaders headers = new HttpHeaders();
       headers.setContentType(MediaType.APPLICATION_JSON);
@@ -138,17 +135,16 @@ catch (Exception e) {
 
       Map<String, String> params = new HashMap<String, String>();
       params.put("id", "1");
-      return rest.getForObject(uri, Employee.class, params);
+      Employee emForPayroll= rest.getForObject(uri, Employee.class, params);
+
+      if(null!= em && null!= emForPayroll && em.equals(emForPayroll))
+        return em;
+      else
+        throw  new AppException("employee object does not match");
     }
     catch ( Exception e) {
       throw  new AppException("value not stored");
     }
 
-  }
-
-  @Override
-  public int delSalary(int empId) {
-    payrollRepository.findFirstByEmpId(empId).ifPresent(payrollRepository::delete);
-    return payrollRepository.countByEmpId(empId);
   }
 }
