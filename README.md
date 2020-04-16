@@ -148,6 +148,12 @@ Above commands gives complete details of the application
 	f. and some experience principle ;)
 
 
+select * from pte.user;
+INSERT INTO `roles` VALUES (1,'ROLE_ADMIN'),(2,'ROLE_AGENT');
+select * from pte.users;
+INSERT INTO pte.roles VALUES (1,'ROLE_ADMIN'),(2,'ROLE_AGENT');
+INSERT INTO pte.users VALUES (1,'varathu09@gmail.com','John','Doe',NULL,'$2a$04$AKH7KONlNCThte32sIO7y.wuLJYovNumMtthBDQy00kOxT27fOvn2','john'),(2,'mike@gmail.com','Mike','Jacson',NULL,'$2a$04$AKH7KONlNCThte32sIO7y.wuLJYovNumMtthBDQy00kOxT27fOvn2','mike');
+INSERT INTO pte.users_roles VALUES (1,1),(2,2);
 
 
 
