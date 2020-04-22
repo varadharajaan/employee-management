@@ -161,4 +161,16 @@ password: password
 
 
 
+Q2 - map
+Q3 - vitamins
+Q4- all are married
+Q5 - summer
+Q6- The Blue Elf since he's the only one that tells the truth!
+Q7 - google
+Q8 -  Ram and Shyam did not gave any answer.  Explanation : There is no electricity so we cannot find answer to ghost 1. There was heavy rain so we cannot find moon at night. There is no other prime number other than 2 with one of its factor as 2. Since we are provided to crack any one question of ghosts to leave we can either decide to walk in camp fire [which would have been put off due to rain] or sit in electric chair for 5 minutes [no electricity].
+Q9 - Bubble Wrap 
+Q11 - Cadbury
+Q12 - 28 hours
+Q13 - Bahubali
+
 
